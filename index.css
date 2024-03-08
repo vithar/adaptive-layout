@@ -57,7 +57,7 @@
 
     /*
         В идеале это должен быть header__burger, но тогда протекает абстракция в
-        .page__menu-switcher:checked ~ .page__head .page__menu-burger::before
+        .page__menu-switcher:checked ~ .page__head .page__menu-burger-lines
     */
     .page__menu-burger {
         position: relative;
@@ -84,12 +84,7 @@
         stroke: var(--color-nav);
         stroke-width: 2;
 
-        transition: opacity var(--transition-fast);
-    }
-
-    .page__menu-burger-lines:hover,
-    .page__menu-burger-close:hover {
-        stroke: var(--color-nav-hover);
+        transition: stroke var(--transition);
     }
 
     .page__menu-burger-lines {
@@ -104,39 +99,9 @@
         transform: translateY(-57%);
     }
 
-    .page__menu-burger::before,
-    .page__menu-burger::after {
-        position: absolute;
-        left: 50%;
-
-        display: block;
-        display: none;
-
-        width: 36%;
-        height: 3px;
-
-        content: '';
-
-        border-radius: 10px;
-        background: red;
-
-        transform: translateX(-50%);
-    }
-
-    .page__menu-burger::before {
-        top: calc(50% - clamp(11px, 2.2vw, 17px));
-
-        box-shadow: 0 clamp(8px, 1.8vw, 13.5px) 0 red;
-
-        transition: box-shadow var(--transition) var(--transition-fast), top var(--transition) var(--transition-fast), left var(--transition) var(--transition-fast), transform var(--transition);
-    }
-
-    .page__menu-burger::after {
-        top: calc(50% + clamp(5px, 1.3vw, 10px));
-
-        width: 36%;
-
-        transition: top var(--transition) var(--transition-fast), left var(--transition) var(--transition-fast), transform var(--transition);
+    .page__menu-burger:hover .page__menu-burger-lines,
+    .page__menu-burger:hover .page__menu-burger-close {
+        stroke: var(--color-nav-hover);
     }
 
     .page__menu-switcher:checked ~ .page__head .page__menu-burger-lines {
@@ -145,26 +110,6 @@
 
     .page__menu-switcher:checked ~ .page__head .page__menu-burger-close {
         opacity: 1;
-    }
-
-    .page__menu-switcher:checked ~ .page__head .page__menu-burger::before {
-        left: calc(29% + clamp(5px, 1.3vw, 10px));
-
-        width: calc(63% + clamp(5px, 1.3vw, 10px));
-
-        box-shadow: 0 6px 0 rgba(0,0,0,0);
-
-        transform: rotate(45deg) translate(5%, 280%);
-        transition: box-shadow var(--transition-fast), top var(--transition), left var(--transition), transform var(--transition) var(--transition-fast);
-    }
-
-    .page__menu-switcher:checked ~ .page__head .page__menu-burger::after {
-        left: calc(21% + clamp(5px, 1.3vw, 10px));
-
-        width: calc(63% + clamp(5px, 1.3vw, 10px));
-
-        transform: rotate(-45deg) translate(21%, -260%);
-        transition: top var(--transition), left var(--transition), transform var(--transition) var(--transition-fast);
     }
 
     .page__menu {
@@ -318,16 +263,18 @@
             width: var(--header-size);
         }
 
-        .header__logo:hover .header__logo-img {
-            stroke: var(--color-nav-hover);
-        }
-
         .header__logo-img {
             width: clamp(24px, 6vw, 50px);
 
             fill: none;
             stroke: var(--color-nav);
             stroke-width: 2;
+
+            transition: stroke var(--transition);
+        }
+
+        .header__logo:hover .header__logo-img {
+            stroke: var(--color-nav-hover);
         }
     /* Logo (end) */
 
@@ -406,6 +353,8 @@
 
             border: 0;
             background: transparent;
+
+            transition: opacity var(--transition);
         }
 
         .header__search-close {
@@ -430,12 +379,15 @@
             fill: none;
             stroke: var(--color-nav);
             stroke-width: 2;
+
+            transition: stroke var(--transition);
+        }
+
+        .header__search-close:hover .header__search-close-img {
+            stroke: var(--color-nav-hover);
         }
 
         .header__search-loupe {
-            /* justify-content: center;
-            align-self: stretch; */
-
             width: clamp(20px, 5vw, 32px);
 
             fill: none;
@@ -445,7 +397,7 @@
             transition: stroke var(--transition);
         }
 
-        .header__search-loupe:hover {
+        .header__search-button:hover .header__search-loupe {
             stroke: var(--color-nav-hover);
         }
     /* Search (end) */
@@ -455,26 +407,8 @@
             top: 0;
         }
 
-        .header_opened .header__search-button {
-            opacity: 0.9;
-
-            transition: opacity var(--transition);
-        }
-
-        .header_opened .header__search-button:hover {
-            opacity: 1;
-        }
-
         .header_opened .header__search-close {
             display: block;
-
-            opacity: 0.9;
-        }
-
-        .header_opened .header__search-close:hover {
-            opacity: 1;
-
-            transition: opacity var(--transition);
         }
     /* Opened state (end) */
 /* Header (end) */
