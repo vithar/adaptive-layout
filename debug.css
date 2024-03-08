@@ -1,0 +1,35 @@
+.header {
+    background: rgba(255, 0, 0, 0.5);
+}
+
+.header__logo {
+    background: rgba(255, 255, 0, 0.2);
+}
+
+.header__title {
+    background: rgba(255, 0, 255, 0.2);
+}
+
+.header__search {
+    background: rgba(255, 255, 0, 0.2);
+}
+
+.header__search-button {
+    background: rgba(0, 255, 0, 0.2);
+}
+
+.page__menu-burger {
+    background: rgba(0, 0, 255, 0.2);
+}
+
+.page__sitemap {
+    background: rgba(0, 0, 127, 0.3);
+}
+
+.page__aside {
+    background: rgba(255, 0, 0, 1);
+}
+
+.adv {
+    background: rgba(255, 255, 0, 0.8);
+}

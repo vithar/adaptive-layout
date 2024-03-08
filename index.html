@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang=ru>
+<meta charset=utf-8>
+<title>Adaptive Layout</title>
+<meta name=viewport content='width=device-width,initial-scale=1'>
+<link href=index.css rel=stylesheet>
+<script>
+    if (location.search.indexOf("?debug") !== -1) {
+        document.write("<link href=debug.css rel=stylesheet>");
+    }
+</script>
+
+<body class='page'>
+
+<input class='page__menu-switcher' type=checkbox id=burger>
+
+<header class='page__head header'>
+    <a class='header__logo' href='' title='Go to index page'>
+        <svg class='header__logo-img' viewBox='0 0 24 24'>
+            <circle cx='12' cy='4.34' r='2.86'/>
+            <circle cx='19.64' cy='16.75' r='2.86'/>
+            <circle cx='4.36' cy='16.75' r='2.86'/>
+            <path d='M6 19.09a8.59 8.59 0 0 0 12 0M14.82 4.82a8.57 8.57 0 0 1 5.77 8.11 7 7 0 0 1-.08 1.1M3.49 14a7 7 0 0 1-.08-1.1 8.57 8.57 0 0 1 5.77-8.08'/>
+        </svg>
+    </a>
+
+    <ol class='header__title'>
+        <li class='header__title-item'
+            ><a class='header__title-link link' href=''>Раздел сайта</a
+        ></li
+        ><li class='header__title-item'
+            ><a class='header__title-link link' href=''>Подраздел сайта</a
+        ></li
+        ><li class='header__title-item header__title-item_current'
+            >Заголовок текущей страницы длинный
+        </li>
+    </ol>
+
+    <form class='header__search'>
+        <input
+            class='header__search-input'
+            name=text
+            type=search
+            autocomplete=off
+            placeholder='Введите текст для поиска'
+        >
+        <button class='header__search-button' type=button>
+            <svg class='header__search-loupe' viewBox='0 0 17 17'>
+                <circle cx='7' cy='7' r='6'></circle>
+                <path d='M12 12l4 4'></path>
+            </svg>
+        </button>
+        <button class='header__search-close' type=button>
+            <svg class='header__search-close-img' viewBox='0 0 17 17'>
+                <path d='m2 2 13 13M2 15 15 2'/>
+            </svg>
+        </button>
+    </form>
+
+    <label class='page__menu-burger' for=burger>
+        <svg class='page__menu-burger-lines' viewBox='0 0 17 17'>
+            <path d='M0 1h17M0 8h17M0 15h17'/>
+        </svg>
+
+        <svg class='page__menu-burger-close' viewBox='0 0 17 17'>
+            <path d='m2 2 13 13M2 15 15 2'/>
+        </svg>
+    </label>
+</header>
+
+<script>
+    var page = document.querySelector('.page');
+    var header = document.querySelector('.header');
+    var searchInput = document.querySelector('.header__search-input');
+    var searchButton = document.querySelector('.header__search-button');
+
+    function toggleState() {
+        page.classList.toggle('page_state_search');
+        header.classList.toggle('header_opened');
+    }
+
+    searchButton.addEventListener('click', function(e) {
+        // включен режим поиска, при клике на кнопку поиска надо сделать её type=submit
+        if (page.classList.contains('page_state_search')) {
+            searchButton.type = 'submit';
+        } else {
+            setTimeout(function() {
+                searchInput.focus();
+            }, 0);
+            searchButton.type = 'button';
+        }
+
+        toggleState();
+    });
+
+    document.querySelector('.header__search-close').addEventListener('click', toggleState);
+
+    document.querySelector('.page__menu-switcher').addEventListener('change', function() {
+        page.classList.toggle('page_state_menu');
+    });
+</script>
+
+<nav class='page__menu'>
+    <ul class='menu'>
+        <li class='menu__item'>
+            <a class='menu__link link' href='1-1'>Section link 1</a>
+        </li>
+        <li class='menu__item'>
+            <a class='menu__link link' href='1-2'>Section link 2</a>
+        </li>
+        <li class='menu__item menu__item_current'>
+            <span class='menu__link menu__link_current'>Section link 3 (current)</span>
+        </li>
+        <li class='menu__item'>
+            <a class='menu__link link' href='1-4'>Section link 4 Section link 4</a>
+        </li>
+        <li class='menu__item'>
+            <a class='menu__link link' href='2-1'>Section link 1</a>
+        </li>
+        <li class='menu__item'>
+            <a class='menu__link link' href='2-2'>Section link 2 Section link 2 Section link 2</a>
+        </li>
+        <li class='menu__item'>
+            <a class='menu__link link' href='2-3'>Section link 1</a>
+        </li>
+        <li class='menu__item'>
+            <a class='menu__link link' href='2-4'>Section link 2</a>
+        </li>
+        <li class='menu__item'>
+            <a class='menu__link link' href='2-5'>Section link 1</a>
+        </li>
+        <li class='menu__item'>
+            <a class='menu__link link' href=''>Section link 2</a>
+        </li>
+        <li class='menu__item'>
+            <a class='menu__link link' href=''>Section link 1</a>
+        </li>
+        <li class='menu__item'>
+            <a class='menu__link link' href=''>Section link 2</a>
+        </li>
+        <li class='menu__item'>
+            <a class='menu__link link' href=''>Section link 1</a>
+        </li>
+        <li class='menu__item'>
+            <a class='menu__link link' href=''>Section link 2</a>
+        </li>
+        <li class='menu__item'>
+            <a class='menu__link link' href=''>Section link 1</a>
+        </li>
+        <li class='menu__item'>
+            <a class='menu__link link' href=''>Section link 2</a>
+        </li>
+        <li class='menu__item'>
+            <a class='menu__link link' href=''>Section link 1</a>
+        </li>
+        <li class='menu__item'>
+            <a class='menu__link link' href=''>Section link 2</a>
+        </li>
+        <li class='menu__item'>
+            <a class='menu__link link' href=''>Section link 1</a>
+        </li>
+        <li class='menu__item'>
+            <a class='menu__link link' href=''>Section link 2</a>
+        </li>
+        <li class='menu__item'>
+            <a class='menu__link link' href=''>Section link 1</a>
+        </li>
+        <li class='menu__item'>
+            <a class='menu__link link' href=''>Section link 2</a>
+        </li>
+        <li class='menu__item'>
+            <a class='menu__link link' href=''>Section link 1</a>
+        </li>
+        <li class='menu__item'>
+            <a class='menu__link link' href=''>Section link 2</a>
+        </li>
+        <li class='menu__item'>
+            <a class='menu__link link' href=''>Section link 1</a>
+        </li>
+        <li class='menu__item'>
+            <a class='menu__link link' href=''>Section link 2</a>
+        </li>
+        <li class='menu__item'>
+            <a class='menu__link link' href=''>Section link 1</a>
+        </li>
+        <li class='menu__item'>
+            <a class='menu__link link' href=''>Section link 2</a>
+        </li>
+        <li class='menu__item'>
+            <a class='menu__link link' href=''>Section link 1</a>
+        </li>
+        <li class='menu__item'>
+            <a class='menu__link link' href=''>Section link 2 THE END MY FRIEND</a>
+        </li>
+    </ul>
+</nav>
+
+<main class='page__main'>
+    <article class='article'>
+        <h1>Header 1</h1>
+        <p>Some example text here</p>
+<!---->
+        <h2>Header 2</h2>
+        <p>Some example text here Some example text here Some example text here Some example text here Some example text here</p>
+        <h3>Header 3</h3>
+        <p>Some example text here Some example text here Some example text here Some example text here Some example text here</p>
+        <h4>Header 4</h4>
+        <p>Some example text here Some example text here Some example text here Some example text here Some example text here</p>
+        <h2>Header 2</h2>
+        <p>Some example text here Some example text here Some example text here Some example text here Some example text here</p>
+        <h3>Header 3</h3>
+        <p>Some example text here Some example text here Some example text here Some example text here Some example text here</p>
+        <h4>Header 4</h4>
+        <p>Some example text here Some example text here Some example text here Some example text here Some example text here</p>
+        <h2>Header 2</h2>
+        <p>Some example text here Some example text here Some example text here Some example text here Some example text here</p>
+        <h3>Header 3</h3>
+        <p>Some example text here Some example text here Some example text here Some example text here Some example text here</p>
+        <h4>Header 4</h4>
+        <p>Some example text here Some example text here Some example text here Some example text here Some example text here</p>
+<!---->
+        <p>BOTTOM MAIN TEXT</p>
+    </article>
+</main>
+
+<aside class='page__aside'>
+    <div class='adv adv_size_s'>
+        Advertising, HEIGHT 90px for small screen
+        <pre style='display:inline'><code>position: fixed</code></pre>
+    </div>
+
+    <div class='adv adv_size_m'>
+        Advertising, HEIGHT 120px for medium screen<br>
+        <pre><code>position: fixed</code></pre>
+    </div>
+
+    <div class='adv adv_size_l'>
+        Advertising<br><br>WIDTH 300px for large screen<br>
+        <pre><code>position: sticky</code></pre>
+    </div>
+</aside>
+
+<div class='page__sitemap sitemap'>
+    <section class='sitemap__section'>
+        <h1 class='sitemap__title'>Раздел сайта 1</h1>
+        <ul class='sitemap__tree'>
+            <li class='sitemap__tree-item-1'>
+                <a class='sitemap__link link' href='tree-item-1-1'>Подраздел 1 раздела 1</a>
+            </li>
+            <li class='sitemap__tree-item-1'>
+                <a class='sitemap__link link' href='tree-item-1-2'>Подраздел 2 раздела 1</a>
+            </li>
+            <li class='sitemap__tree-item-1'>
+                <a class='sitemap__link link' href='tree-item-1-2'>Подраздел 3 раздела 1</a>
+            </li>
+        </ul>
+    </section>
+    <section class='sitemap__section'>
+        <h1 class='sitemap__title'>Раздел сайта 2</h1>
+        <ul class='sitemap__tree'>
+            <li class='sitemap__tree-item-1'>
+                <a class='sitemap__link link' href='tree-item-2-1'>Подраздел 1 раздела 2</a>
+            </li>
+            <li class='sitemap__tree-item-1'>
+                <a class='sitemap__link link' href='tree-item-2-2'>Подраздел 2 раздела 2</a>
+            </li>
+            <li class='sitemap__tree-item-1'>
+                <a class='sitemap__link link' href='tree-item-2-3'>Подраздел 3 раздела 2</a>
+            </li>
+        </ul>
+    </section>
+    <section class='sitemap__section'>
+        <h1 class='sitemap__title'>Раздел сайта 3</h1>
+        <ul class='sitemap__tree'>
+            <li class='sitemap__tree-item-1'>
+                <a class='sitemap__link link' href='tree-item-3-1'>Подраздел 1 раздела 3</a>
+            </li>
+            <li class='sitemap__tree-item-1'>
+                <a class='sitemap__link link' href='tree-item-3-2'>Подраздел 2 раздела 3</a>
+            </li>
+            <li class='sitemap__tree-item-1'>
+                <a class='sitemap__link link' href='tree-item-3-3'>Подраздел 3 раздела 3</a>
+            </li>
+        </ul>
+    </section>
+    <section class='sitemap__section'>
+        <h1 class='sitemap__title'>Раздел сайта 4</h1>
+        <ul class='sitemap__tree'>
+            <li class='sitemap__tree-item-1'>
+                <a class='sitemap__link link' href='tree-item-4-1'>Подраздел 1 раздела 4</a>
+            </li>
+            <li class='sitemap__tree-item-1'>
+                <a class='sitemap__link link' href='tree-item-4-2'>Подраздел 2 раздела 4</a>
+            </li>
+            <li class='sitemap__tree-item-1'>
+                <a class='sitemap__link link' href='tree-item-4-3'>Подраздел 3 раздела 4</a>
+            </li>
+            <li class='sitemap__tree-item-1'>
+                <a class='sitemap__link link' href='tree-item-4-4'>Подраздел 4 раздела 4</a>
+            </li>
+            <li class='sitemap__tree-item-1'>
+                <a class='sitemap__link link' href='tree-item-4-5'>Подраздел 5 раздела 4</a>
+            </li>
+            <li class='sitemap__tree-item-1'>
+                <a class='sitemap__link link' href='tree-item-4-6'>Подраздел 5 раздела 4</a>
+            </li>
+        </ul>
+    </section>
+</div>
