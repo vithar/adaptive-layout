@@ -9,20 +9,15 @@
         --color-nav-hover: #fff;
     }
 
-    html {
-        /* на малых экранах меню убирается вправо за экран, нужно его отрезать */
-        overflow-x: hidden;
-
-        /* чтобы отрезать правую часть с меню в Safari */
-        max-width: 100vw;
-        /* чтобы не прокручивался контент под меню в Safari */
-        height: 100vw;
-        /* чтобы растянуть фон под sitemap на всю высоту */
+    html,
+    body {
+        /*
+            Чтобы не прокручивался контент под меню в Safari и
+            растянуть фон под sitemap на всю высоту
+        */
         min-height: 100%;
         margin: 0;
         padding: 0;
-
-        font: 100% Arial, sans-serif;
     }
 
     .link {
@@ -32,24 +27,8 @@
 
 /* Page (begin) */
     .page {
-        /* чтобы отрезать правую часть с меню в Safari */
-        position: absolute;
-
-        /* на малых экранах меню убирается вправо за экран, нужно его отрезать */
-        overflow-x: hidden;
-
-        /* чтобы отрезать правую часть с меню в Safari */
-        max-width: 100vw;
-        /* чтобы не прокручивался контент под меню в Safari */
-        height: 100vw;
-        /* чтобы растянуть фон под sitemap на всю высоту */
-        min-height: 100%;
-
-        margin: 0;
-        padding: 0;
-
         /* Кегль зависит от ширины экрана, ограничен снизу и сверху фиксированным размером */
-        font-size: clamp(1rem, 0.5rem + 0.9vw, 1.4rem);
+        font: clamp(1rem, 0.5rem + 0.9vw, 1.4rem) Arial, sans-serif;
 
         background: linear-gradient(#052433 0%,#0b5174 100%);
     }
@@ -64,6 +43,8 @@
 
     .page__menu-switcher:checked ~ .page__menu {
         left: 0;
+
+        width: 100%;
     }
 
     .page__menu-switcher:checked ~ .page__aside {
@@ -193,12 +174,12 @@
 
         overflow: hidden;
 
-        width: 100%;
+        width: 0;
         height: 100vh;
 
         background: #052433;
 
-        transition: left var(--transition);
+        transition: left var(--transition), width var(--transition);
     }
 
     .page__main {
@@ -501,7 +482,7 @@
 /* Menu (begin) */
     .menu {
         margin: 0;
-        padding: 0.5rem 0 0.5rem clamp(1px, 0.4rem + 1.2vw, 2rem);
+        padding: 0.5rem 0 5rem clamp(1px, 0.4rem + 1.2vw, 2rem);
 
         list-style: none;
     }
@@ -535,6 +516,10 @@
 
     /* 1200 = 200 + 1000, где 1000 — ширина рекламы РСЯ */
     @media (min-width: 1000px) {
+        .menu {
+            padding-bottom: 0.rem;
+        }
+
         .menu__item_current {
             display: block;
         }
