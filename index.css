@@ -28,8 +28,9 @@
 /* Page (begin) */
     .page {
         /* Кегль зависит от ширины экрана, ограничен снизу и сверху фиксированным размером */
-        font: clamp(1rem, 0.5rem + 0.9vw, 1.4rem) Arial, sans-serif;
+        font: clamp(1rem, 0.5rem + 0.9vw, 1.3rem) Arial, sans-serif;
 
+        color: rgba(0, 0, 0, 0.85);
         background: linear-gradient(#052433 0%,#0b5174 100%);
     }
 
@@ -52,7 +53,13 @@
     }
 
     .page__menu-switcher:checked ~ .page__main {
+        position: static;
+
         overflow: hidden;
+    }
+
+    .page__menu-switcher:checked ~ .page__main .page__foot {
+        display: none;
     }
 
     /*
@@ -128,8 +135,11 @@
     }
 
     .page__main {
-        padding: clamp(6px, 2.5vw, 22px);
-        padding-bottom: 60px;
+        overflow: auto;
+        box-sizing: border-box;
+
+        min-height: calc(100vh - var(--header-size));
+        padding: max(6px, min(1vw, 10px)) clamp(6px, 3vw, 30px) 50px;
 
         background: #fff;
     }
@@ -141,7 +151,7 @@
         left: 0;
 
         height: 50px;
-        padding: 5px clamp(10px, 2.5vw, 22px);
+        /* padding: 5px clamp(10px, 2.5vw, 22px); */
 
         background: #fff;
 
@@ -187,12 +197,13 @@
 
             min-width: 728px;
             height: 90px;
-            padding: 5px 10px;
+            /* padding: 5px 10px; */
         }
 
         .page__main {
             min-width: 728px;
-            padding-bottom: 100px;
+            min-height: calc(100vh - var(--header-size));
+            padding-bottom: 90px;
         }
     }
 
@@ -205,6 +216,7 @@
 
         .page__main {
             min-width: auto;
+            min-height: calc(100vh - var(--header-size));
             padding-bottom: 0;
         }
 
@@ -283,7 +295,7 @@
             align-self: center;
             flex-grow: 1;
 
-            padding: 0 1rem;
+            padding: 0;
 
             hyphens: auto;
         }
@@ -416,10 +428,18 @@
 /* Menu (begin) */
     .menu {
         margin: 0;
-        padding: 0.5rem 0 5rem clamp(1px, 0.4rem + 1.2vw, 2rem);
+        padding: 1rem 0 1rem clamp(1px, 0.4rem + 1.2vw, 2rem);
 
         list-style: none;
     }
+
+    @media (min-width: 1000px) {
+        .menu {
+            padding-top: 0;
+            padding-bottom: 5rem;
+        }
+    }
+
 
     .menu__item {
         margin: 0 0 0.3rem;
@@ -433,6 +453,8 @@
     }
 
     .menu__link {
+        text-decoration: none;
+
         color: var(--color-nav);
     }
     /*
@@ -440,7 +462,7 @@
         color: var(--color-nav-visited);
     }
     */
-    .menu__link[href]:hover {
+    .menu__link[href]:not(.menu__link_current):hover {
         color: var(--color-nav-hover);
     }
 
@@ -461,6 +483,10 @@
 /* Menu (end) */
 
 /* Adv (begin) */
+    .adv {
+        height: 100%;
+    }
+
     .adv_size_m,
     .adv_size_l {
         display: none;
@@ -489,6 +515,7 @@
             position: sticky;
             top: 0;
 
+            height: auto;
             padding: 0 10px;
 
             color: var(--color-nav);
