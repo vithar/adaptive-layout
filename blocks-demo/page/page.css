@@ -1,0 +1,16 @@
+.page {
+    color: rgba(0, 0, 0, 0.85);
+    background: linear-gradient(#052433 0%,#0b5174 100%);
+}
+
+.page__menu {
+    background: #052433;
+}
+
+.page__main {
+    background: #fff;
+}
+
+.page__side {
+    color: #fff;
+}

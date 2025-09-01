@@ -1,0 +1,16 @@
+:root {
+    --transition: 0.3s;
+    --transition-fast: 0.15s;
+    --header-size: clamp(40px, 10vw, 90px);
+}
+
+html,
+body {
+    /*
+        Чтобы не прокручивался контент под меню в Safari и
+        растянуть фон под sitemap на всю высоту
+    */
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+}

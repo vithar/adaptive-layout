@@ -1,0 +1,5 @@
+:root {
+    --color-nav: rgba(255, 255, 255, 0.8);
+    --color-nav-visited: rgba(255, 128, 128, 0.2);
+    --color-nav-hover: #fff;
+}

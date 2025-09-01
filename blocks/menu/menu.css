@@ -1,0 +1,55 @@
+.menu {
+    margin: 0;
+    padding: 1rem 0 1rem clamp(1px, 0.4rem + 1.2vw, 2rem);
+
+    list-style: none;
+}
+
+@media (min-width: 1000px) {
+    .menu {
+        padding-top: 0;
+        padding-bottom: 5rem;
+    }
+}
+
+.menu__item {
+    margin: 0 0 0.3rem;
+    padding: 0.6rem;
+}
+
+.menu__item_current {
+    display: inline-block;
+
+    background: #fff;
+}
+
+.menu__link {
+    display: block;
+
+    text-decoration: none;
+
+    color: var(--color-nav);
+}
+/*
+.menu__link:visited {
+    color: var(--color-nav-visited);
+}
+*/
+.menu__link[href]:not(.menu__link_current):hover {
+    color: var(--color-nav-hover);
+}
+
+.menu__link_current {
+    color: #000;
+}
+
+/* 1200 = 200 + 1000, где 1000 — ширина рекламы РСЯ */
+@media (min-width: 1000px) {
+    .menu {
+        padding-bottom: 0.rem;
+    }
+
+    .menu__item_current {
+        display: block;
+    }
+}

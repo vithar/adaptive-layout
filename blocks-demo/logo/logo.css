@@ -1,0 +1,17 @@
+.logo {
+    width: var(--header-size);
+}
+
+.logo__logo {
+    width: clamp(24px, 6vw, 50px);
+
+    fill: none;
+    stroke: var(--color-nav);
+    stroke-width: 2;
+
+    transition: stroke var(--transition);
+}
+
+.logo:hover .logo__logo {
+    stroke: var(--color-nav-hover);
+}
