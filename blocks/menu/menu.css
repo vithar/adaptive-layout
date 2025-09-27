@@ -14,22 +14,22 @@
 
 .menu__item {
     margin: 0 0 0.3rem;
-    padding: 0.6rem;
 }
 
 .menu__item_current {
     display: inline-block;
-
-    background: #fff;
 }
 
 .menu__link {
     display: block;
 
+    padding: .6rem;
+
     text-decoration: none;
 
     color: var(--color-nav);
 }
+
 /*
 .menu__link:visited {
     color: var(--color-nav-visited);
@@ -39,17 +39,27 @@
     color: var(--color-nav-hover);
 }
 
-.menu__link_current {
-    color: #000;
-}
-
 /* 1200 = 200 + 1000, где 1000 — ширина рекламы РСЯ */
 @media (min-width: 1000px) {
     .menu {
-        padding-bottom: 0.rem;
+        padding-bottom: 0rem;
     }
 
     .menu__item_current {
         display: block;
     }
+}
+
+.menu__submenu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu__submenu .menu__link {
+    padding-left: 2rem;
+}
+
+.menu__submenu .menu__submenu .menu__link {
+    padding-left: 3.5rem;
 }
