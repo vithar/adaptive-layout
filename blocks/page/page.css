@@ -12,9 +12,9 @@
 }
 
 .page__menu-switcher:checked ~ .page__menu {
-    left: 0;
+    right: 0;
 
-    width: 100%;
+    width: 100vw;
 }
 
 .page__menu-switcher:checked ~ .page__aside {
@@ -89,16 +89,16 @@
 }
 
 .page__menu {
-    position: absolute;
+    position: fixed;
     top: 0;
-    left: 100%;
+    right: -100vw;
 
     overflow: hidden;
 
-    width: 0;
+    width: 100vw;
     height: 100vh;
 
-    transition: left var(--transition), width var(--transition);
+    transition: right var(--transition), width var(--transition);
 }
 
 .page__main {
@@ -139,7 +139,8 @@
         grid-column: 1/4;
     }
 
-    .page__menu {
+    .page__menu,
+    .page__menu-switcher:checked ~ .page__menu {
         position: static;
 
         width: auto;
